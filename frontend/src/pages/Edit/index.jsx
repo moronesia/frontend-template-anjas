@@ -8,6 +8,7 @@ const Edit = () => {
   const[name, setName] = useState("");
   const[price, setPrice] = useState("");
   const[stock, setStock] = useState("");
+  const [check, setCheck] = useState("");
   const {id} = useParams();
 
 
@@ -16,7 +17,7 @@ const Edit = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getUserById = async() => {
-    const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v4/products/${id}`);
+    const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/${id}`);
     setName(response.data.name);
     setPrice(response.data.price);
     setStock(response.data.stock);
@@ -25,7 +26,7 @@ const Edit = () => {
   const updateUser = async(e) => {
     e.preventDefault();
     try {
-      await axios.patch(`${process.env.REACT_APP_BASE_URL}/api/v4/products/${id}`, {
+      await axios.patch(`${process.env.REACT_APP_BASE_URL}/${id}`, {
         name,
         price,
         stock
@@ -63,7 +64,9 @@ const Edit = () => {
           <Input 
             name="status" 
             type="checkbox" 
-            label="Active" 
+            label="Active"
+            checked={check} 
+            onChange={(e) => setCheck(e.target.checked)} 
           />
           <button 
             type="submit" 

@@ -8,12 +8,13 @@ const TambahProducts = () => {
   const[name, setName] = useState("");
   const[price, setPrice] = useState("");
   const[stock, setStock] = useState("");
+  const [check, setCheck] = useState("");
 
 
   const tambahProduct = async(e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_BASE_URL}/api/v4/products`, {
+      await axios.post(`${process.env.REACT_APP_BASE_URL}`, {
         name,
         price,
         stock
@@ -51,6 +52,8 @@ const TambahProducts = () => {
             name="status" 
             type="checkbox" 
             label="Active" 
+            checked={check} 
+            onChange={(e) => setCheck(e.target.checked)}
           />
           <button 
             type="submit" 
