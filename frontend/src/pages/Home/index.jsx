@@ -13,13 +13,13 @@ const Home = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/users");
+    const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v4/products`);
     setUsers(response.data);
   };
 
   const deleteUser = async(id) => {
     try {
-      await axios.delete(`http://localhost:5000/users/${id}`);
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/api/v4/products/${id}`);
       getUsers();
     } catch (error) {
       console.log(error);

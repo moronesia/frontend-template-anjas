@@ -18,7 +18,7 @@ const Detail = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getUserById = async () => {
-    const response = await axios.get(`http://localhost:5000/users/${id}`);
+    const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/v4/products/${id}`);
     setName(response.data.name);
     setPrice(response.data.price);
     setStock(response.data.stock);

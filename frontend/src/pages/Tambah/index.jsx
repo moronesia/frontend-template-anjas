@@ -13,7 +13,7 @@ const TambahProducts = () => {
   const tambahProduct = async(e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/users', {
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/api/v4/products`, {
         name,
         price,
         stock
